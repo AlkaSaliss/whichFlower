@@ -95,6 +95,9 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+    aaptOptions {
+        noCompress 'tflite'
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -139,6 +142,8 @@ android {
 }
 
 dependencies {
+    implementation project(':tflite-react-native')
+    compile project(':tflite-react-native')
     implementation project(':react-native-camera')
     implementation project(':react-native-image-picker')
     implementation project(':react-native-vector-icons')

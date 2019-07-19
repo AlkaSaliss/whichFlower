@@ -44,7 +44,11 @@ export default class CameraScreen extends React.Component {
             .then((data) => {
                 this.props.navigation.navigate(
                     "Predict",
-                    {data: data, username: this.props.navigation.getParam('username')}
+                    {
+                        data: data,
+                        username: this.props.navigation.getParam('username'),
+                        imagePath: data.uri
+                    }
                 )
             })
             .catch(err => console.error(err))

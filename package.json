@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^1.2.3",
     "axios": "^0.19.0",
     "react": "16.8.3",
     "react-native": "0.59.8",
@@ -16,7 +17,8 @@
     "react-native-gesture-handler": "^1.2.1",
     "react-native-image-picker": "^0.28.1",
     "react-native-vector-icons": "^6.4.2",
-    "react-navigation": "^3.11.0"
+    "react-navigation": "^3.11.0",
+    "tflite-react-native": "^0.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

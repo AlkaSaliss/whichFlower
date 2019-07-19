@@ -1,7 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, Alert, Platform } from 'react-native';
 import Emoji from 'react-native-emoji';
+import Tflite from "tflite-react-native";
 
+
+// instantiate a new tflite object
+let tflite = new Tflite()
+const height_ = 224
+const width_ = 224
 
 export default class  PredictScreen extends React.Component {
 
@@ -22,8 +28,16 @@ export default class  PredictScreen extends React.Component {
     }
 
     state = {
-        photoData: this.props.navigation.getParam('data')
+        photoData: this.props.navigation.getParam('data'),
+        imagePath: this.props.navigation.getParam('imagePath'),
+        model: null,
+        imageHeight: height_,
+        imageWidth: width_,
+        predictions: null,
+        labelsFile: 'models/labels.txt',
+        modelFile: 'models/baseline_data_aug.tflite',
     }
+
 
     handlePredict = () => {
         Alert.alert(
@@ -31,8 +45,49 @@ export default class  PredictScreen extends React.Component {
             'Coming soon!!!',
             [{text: 'Ok'}]
         )
+
+        tflite.runModelOnImage({
+                path: this.state.imagePath, // required
+                imageMean: 0.0, // defaults to 127.5
+                imageStd: 1.0, // defaults to 127.5
+                numResults: 5, // defaults to 5
+                threshold: 0.0 // defaults to 0.1
+            },
+            (err, res) => {
+                if (err) { 
+                    console.log('***************')
+                    console.log(err)
+                    console.log('***************')
+                }
+                    
+                else {
+                    console.log('========================')
+                    console.log(res)
+                    console.log('========================')
+                }
+            })
+            console.log('Inference done!!!!!')
+            console.log(this.state.photoData.uri)
+            console.log(this.state.photoData.path)
     }
 
+    componentDidMount() {
+        tflite.loadModel({
+            model: this.state.modelFile,
+            labels: this.state.labelsFile
+        },
+            (err, res) => {
+                if (err) { console.log(err) } 
+                else { console.log(res) }
+            }
+        )
+        
+        // this.setState({
+        //     ...this.state,
+        //     imagePath: Platform.OS === 'ios' ? this.state.photoData.uri : 'file://' + this.state.photoData.path
+        // })
+        
+    }
 
     render(){
 

@@ -35,9 +35,11 @@ export default class  HomeScreen extends React.Component {
             if (response.uri){
                 this.props.navigation.navigate(
                     "Predict",
-                    {data: response}
+                    {
+                        data: response,
+                        imagePath: response.path
+                    }
                 )
-                // this.setState({photo: response})
             }
         })
     }
@@ -78,7 +80,6 @@ export default class  HomeScreen extends React.Component {
                         <FlatList 
                             numColumns={2}
                             data={[{key: 'Daisy'}, {key: 'Dandelion'}, {key: 'Rose'}, {key: 'Sunflower'}, {key: 'Tulip'}]}
-                            // renderItem={({item}) => <Text style={styles.items}>{item.key}</Text>}
                             renderItem={this.renderItem}
                              
                         />
@@ -87,7 +88,7 @@ export default class  HomeScreen extends React.Component {
 
                     <View style={styles.image}>
                         <Image
-                            source={require('../images/AI.jpg')}
+                            source={require('../data/images/AI.jpg')}
                             style={{width: '100%', height: '100%', borderRadius: 15}}
                             resizeMode='stretch'
                         />

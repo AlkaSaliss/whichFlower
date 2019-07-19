@@ -59,9 +59,6 @@ export default class LoginScreen extends React.Component {
         }
     }
 
-    // handleUsernameChange = this.handleChange('username');
-    // handlePasswordChange = this.handleChange('password');
-
     validateForm = () => {
         if (this.state.username.length >= 3 && this.state.password.length >= 8) {
             this.setState({ isFormValid: true })
@@ -80,7 +77,7 @@ export default class LoginScreen extends React.Component {
                 <Text style={[styles.introText, {fontSize: 15}]}>This app predicts flower species from images using Deep Learning</Text>
                 <Image
                     style={styles.image}
-                    source={require('../images/flower1.jpg')}
+                    source={require('../data/images/flower1.jpg')}
                     resizeMode='contain'
                 />
 
