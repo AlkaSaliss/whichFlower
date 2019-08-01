@@ -6,7 +6,8 @@ import {
     StyleSheet,
     Platform,
 } from 'react-native';
-import {RNCamera} from 'react-native-camera';
+import { RNCamera } from 'react-native-camera';
+import { Icon } from 'react-native-elements';
 
 
 export default class CameraScreen extends React.Component {
@@ -72,9 +73,18 @@ export default class CameraScreen extends React.Component {
                     fixOrientation={true}
                     forceUpOrientation={true}
                 >
-                    <Button
+                    {/* <Button
                         style={styles.capture}
                         title='Capture'
+                        onPress={this.takePicture.bind(this)}
+                    /> */}
+                    <Icon 
+                        name='camera'
+                        type='material-community'
+                        color='blue'
+                        underlayColor='green'
+                        raised
+                        reverse
                         onPress={this.takePicture.bind(this)}
                     />
                 </RNCamera>
@@ -90,18 +100,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     camera: {
-        flex: 1,
+        flex: 9,
         justifyContent: 'flex-end',
         alignItems: 'center',
         height: Dimensions.get('window').height,
         width: Dimensions.get('window').width
         },
     capture: {
-        flex: 0,
+        flex: 1,
         backgroundColor: '#fff',
         borderRadius: 5,
         color: '#000',
-        padding: 10,
-        margin: 40
+        // padding: 10,
+        // margin: 40
     }
 })

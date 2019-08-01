@@ -2,6 +2,7 @@ import React from 'react';
 import {Platform, StyleSheet, Text, View, Image, Button, FlatList} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import Emoji from 'react-native-emoji';
+import { Icon } from 'react-native-elements';
 
 
 export default class  HomeScreen extends React.Component {
@@ -37,7 +38,8 @@ export default class  HomeScreen extends React.Component {
                     "Predict",
                     {
                         data: response,
-                        imagePath: response.path
+                        imagePath: response.path,
+                        username: this.props.navigation.getParam('username')
                     }
                 )
             }
@@ -95,11 +97,33 @@ export default class  HomeScreen extends React.Component {
                     </View>
                     
                     <View style={styles.photoButton}>
-                        <View style={styles.buttonsContainer}>
+                        {/* <View style={styles.buttonsContainer}>
                             <Button title='Upload' onPress={this.handleChoosePhoto} /> 
+                        </View> */}
+                        <View style={[styles.buttonsContainer, {paddingRight: 15}]}>
+                            <Icon 
+                                name='folder-upload'
+                                type='material-community'
+                                color='blue'
+                                underlayColor='green'
+                                raised
+                                reverse 
+                                onPress={this.handleChoosePhoto}
+                            /> 
                         </View>
-                        <View style={styles.buttonsContainer} >
+                        {/* <View style={styles.buttonsContainer} >
                             <Button title = 'Camera' onPress={this.goToCamera }/>
+                        </View> */}
+                        <View style={[styles.buttonsContainer, {paddingLeft: 15}]} >
+                            <Icon 
+                                name='camera'
+                                type='material-community'
+                                color='blue'
+                                underlayColor='green'
+                                raised
+                                reverse
+                                onPress = {this.goToCamera}
+                            />
                         </View>
                     </View>
                     
@@ -113,7 +137,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'space-between',
-        backgroundColor: '#b7b3ce',
+        // backgroundColor: '#b7b3ce',
+        backgroundColor: '#F4FBFB',
     },
     photoButton: {
         flex: 2,

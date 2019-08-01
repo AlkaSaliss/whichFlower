@@ -13,6 +13,7 @@ import LoginScreen from './screens/login-screen';
 import HomeScreen from './screens/home';
 import CameraScreen from './screens/camera-screen';
 import PredictScreen from './screens/predict-screen';
+import BarChartComponent from './screens/barChart';
 import { createStackNavigator, createAppContainer} from 'react-navigation';
 
 
@@ -30,9 +31,13 @@ const AppNavigator = createStackNavigator(
     Predict: {
       screen: PredictScreen
     }
+    // BarChart: {
+    //   screen: BarChartComponent
+    // }
     },
   {
     initialRouteName: "Login",
+    // initialRouteName: "BarChart",
     headerLayoutPreset: 'center'
   }
 )

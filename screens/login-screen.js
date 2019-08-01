@@ -4,10 +4,11 @@ import {
     Text,
     KeyboardAvoidingView,
     Image,
+    View
 } from 'react-native';
 
-import { Input, Button } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Input, Button, Icon } from 'react-native-elements';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default class LoginScreen extends React.Component {
@@ -71,7 +72,7 @@ export default class LoginScreen extends React.Component {
 
         return (
             <KeyboardAvoidingView
-                style={[styles.container, { backgroundColor: '#b7b3ce' }]}
+                style={styles.container}
                 username={this.state.username}>
                 <Text style={styles.introText}>Flower Species Recognition</Text>
                 <Text style={[styles.introText, {fontSize: 15}]}>This app predicts flower species from images using Deep Learning</Text>
@@ -87,7 +88,7 @@ export default class LoginScreen extends React.Component {
                     placeholder='username'
                     // placeholderTextColor='black'
                     leftIcon={
-                        <Icon name='user' size={24} color='black' />
+                        <Icon name='user' type='feather' size={24} color='black' />
                     }
                     // inputStyle={styles.text}
                     inputContainerStyle={styles.input}
@@ -98,7 +99,6 @@ export default class LoginScreen extends React.Component {
 
                 <Input
                     placeholder='password'
-                    // placeholderTextColor='black'
                     leftIcon={
                         <Icon name='lock' size={24} color='black' />
                     }
@@ -108,7 +108,7 @@ export default class LoginScreen extends React.Component {
                     onChangeText={this.handleChange('password')}
                     secureTextEntry={true}
                 />
-                <Button
+                {/* <Button
                     buttonStyle={[styles.button, { backgroundColor: changingColor[this.state.isFormValid] }]}
                     onPress={this.handleSubmit}
                     disabled={!this.state.isFormValid}
@@ -119,7 +119,21 @@ export default class LoginScreen extends React.Component {
                             color="black"
                         />
                     }
-                />
+                /> */}
+                
+                <View style={styles.button}>
+                    <Icon 
+                        name='login'
+                        type='antdesign'
+                        color='blue'
+                        underlayColor='green'
+                        raised
+                        reverse
+                        onPress={this.handleSubmit}
+                        disabled={!this.state.isFormValid}
+                    />
+                </View>
+
             </KeyboardAvoidingView>
 
         )
@@ -131,7 +145,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        // alignItems: 'center'
+        backgroundColor: '#F4FBFB',
+        // backgroundColor: '#b7b3ce'
     },
     input: {
         borderWidth: 1,
@@ -140,23 +155,17 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         marginHorizontal: 20,
-        // paddingHorizontal: 10,
         paddingVertical: 10,
         borderRadius: 10,
         borderColor: '#442ccc',
-        // width: 300,
         height: 30
     },
     button: {
-        width: '40%',
-        // height: 10,
-        backgroundColor: 'blue',
+        // backgroundColor: '#b7b3ce',
+        backgroundColor: '#F4FBFB',
         alignItems: 'center',
-        marginTop: 20,
-        marginHorizontal: 150,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        borderRadius: 3,
+        paddingBottom: 20,
+        paddingTop: 20,
         justifyContent: 'center',
     },
     text: {

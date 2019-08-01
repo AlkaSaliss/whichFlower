@@ -7,8 +7,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@tensorflow/tfjs": "^1.2.3",
     "axios": "^0.19.0",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "path-browserify": "0.0.0",
     "react": "16.8.3",
     "react-native": "0.59.8",
     "react-native-camera": "^2.11.1",
@@ -16,8 +18,12 @@
     "react-native-emoji": "^1.8.0",
     "react-native-gesture-handler": "^1.2.1",
     "react-native-image-picker": "^0.28.1",
+    "react-native-level-fs": "3.0.0",
+    "react-native-svg": "^9.5.3",
+    "react-native-svg-charts": "^5.3.0",
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.11.0",
+    "rn-nodeify": "^10.0.1",
     "tflite-react-native": "^0.0.5"
   },
   "devDependencies": {
@@ -30,5 +36,13 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "react-native": {
+    "path": "path-browserify",
+    "fs": "react-native-level-fs"
+  },
+  "browser": {
+    "path": "path-browserify",
+    "fs": "react-native-level-fs"
   }
 }
