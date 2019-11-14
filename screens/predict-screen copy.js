@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Button, Alert, Platform } from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import Emoji from 'react-native-emoji';
 import Tflite from "tflite-react-native";
+import BarChartComponent from './barChart';
+import targets from '../assets/models/targets.json'
 
 
 // instantiate a new tflite object
@@ -37,44 +39,63 @@ export default class  PredictScreen extends React.Component {
         imageHeight: height_,
         imageWidth: width_,
         predictions: null,
+        hasPredicted: false,
+        animatePred: false,
         labelsFile: 'models/labels.txt',
-        modelFile: 'models/baseline_data_aug.tflite',
+        modelFile: 'models/model.tflite',
+        imageFlex: 9
+
     }
+    
 
 
     handlePredict = () => {
-        Alert.alert(
-            'Predictions',
-            'Coming soon!!!',
-            [{text: 'Ok'}]
-        )
+        this.setState({
+            ...this.state,
+            animatePred: true
+        })
 
         tflite.runModelOnImage({
                 path: this.state.imagePath, // required
                 imageMean: 0.0, // defaults to 127.5
-                imageStd: 1.0, // defaults to 127.5
+                imageStd: 255.0, // defaults to 127.5
                 numResults: 5, // defaults to 5
                 threshold: 0 // defaults to 0.1
             },
             (err, res) => {
                 if (err) { 
-                    console.log('***************')
-                    console.log(err)
-                    console.log('***************')
+                    Alert.alert(
+                        err,
+                        err,
+                        [{text: 'Ok'}]
+                    )
                 }
                     
                 else {
-                    console.log('========================')
-                    console.log(res)
-                    console.log('========================')
+                    res.sort((x, y) => (x.label > y.label) ? 1 : ((y.label > x.label) ? -1 : 0))
+                    resFinal = []
+                    for (let i=0; i<res.length; i++){
+                        resFinal.push(
+                            {
+                                ...res[i], key: res[i].label,
+                                confidence: Number(parseFloat(res[i].confidence*100).toFixed(2))
+                            }
+                        )
+                    }
+                     
+                    this.setState({
+                        ...this.state,
+                        predictions: resFinal, 
+                        imageFlex: 5,
+                        hasPredicted: true
+                    })
                 }
             })
-            console.log('Inference done!!!!!')
-            console.log(this.state.photoData.uri)
-            console.log(this.state.photoData.path)
     }
 
     componentDidMount() {
+        console.log(this.state)
+        console.log(targets)
         tflite.loadModel({
             model: this.state.modelFile,
             labels: this.state.labelsFile
@@ -84,12 +105,19 @@ export default class  PredictScreen extends React.Component {
                 else { console.log(res) }
             }
         )
-        
-        // this.setState({
-        //     ...this.state,
-        //     imagePath: Platform.OS === 'ios' ? this.state.photoData.uri : 'file://' + this.state.photoData.path
-        // })
-        
+    }
+
+
+    renderItem = ({item}) => {
+        return (
+            <View style={{flexDirection: "row", }}>
+                <Text style={[styles.items, {paddingRight: 0}]}>{'\u2022' + ' '}</Text>
+                <View style={{flexDirection: 'row', paddingLeft: 0}}>
+                    <Text style={[styles.items]}>{item.label + ' : '}</Text>
+                    <Text style={[styles.items, {color: 'red'}]}>{parseFloat(item.confidence*100).toFixed(4)}</Text>
+                </View>
+            </View>
+        )
     }
 
     render(){
@@ -104,7 +132,7 @@ export default class  PredictScreen extends React.Component {
                         {this.state.photoData && (
                             <React.Fragment>
                                 
-                                <View style={{flex: 9, paddingBottom: 20, }}>
+                                <View style={{flex: this.state.imageFlex, paddingBottom: 20, }}>
                                     <Image
                                         style={{width: '100%', height: '100%', borderRadius: 15}}
                                         resizeMode='stretch'
@@ -112,9 +140,34 @@ export default class  PredictScreen extends React.Component {
                                     />
                                 </View>
 
-                                <View style={[styles.buttonPredict]}>
-                                    <Button title="Predict" onPress={this.handlePredict} />
-                                </View>
+                                {this.state.predictions && (
+
+                                    <BarChartComponent 
+                                        data={this.state.predictions}
+                                        viewStyle={styles.predictions}
+                                    />
+                                )
+                                }
+                            
+                                { !this.state.hasPredicted ?
+                                    <View style={[styles.buttonPredict]}>
+                                        <Button
+                                            title="Predict"
+                                            onPress={this.handlePredict}
+                                        />
+                                    </View>
+                                        :
+                                    <View style={[styles.buttonPredict]}>
+                                        <Button
+                                            title="Pick another image"
+                                            onPress={() => {this.props.navigation.navigate(
+                                                "Home",
+                                                {username: this.props.navigation.getParam('username')}
+                                            )}}
+                                        />
+                                    </View>
+
+                                }
 
                             </React.Fragment>
                         )}
@@ -129,7 +182,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'space-between',
-        backgroundColor: '#b7b3ce',
+        backgroundColor: '#F4FBFB',
     },
     text: {
         flex: 1,
@@ -152,5 +205,17 @@ const styles = StyleSheet.create({
         width: '40%',
         height: '60%',
     },
+    items: {
+        color: 'green',
+        fontSize: 15,
+        fontWeight: 'bold',
+        padding: 5
+    },
+    predictions: {
+        width: '100%',
+        height: '100%',
+        flex: 5,
+        paddingBottom: 4,
+    }
 })
 

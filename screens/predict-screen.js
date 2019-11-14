@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Image, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import Emoji from 'react-native-emoji';
 import Tflite from "tflite-react-native";
 import BarChartComponent from './barChart';
+import targets from '../assets/targets.json'
 
 
 // instantiate a new tflite object
@@ -39,19 +40,18 @@ export default class  PredictScreen extends React.Component {
         imageWidth: width_,
         predictions: null,
         hasPredicted: false,
+        animatePred: false,
         labelsFile: 'models/labels.txt',
-        modelFile: 'models/baseline_data_aug.tflite',
+        modelFile: 'models/model.tflite',
         imageFlex: 9
 
-    }
-
+    }    
 
     handlePredict = () => {
-        Alert.alert(
-            'Predictions',
-            'Coming soon!!!',
-            [{text: 'Ok'}]
-        )
+        this.setState({
+            ...this.state,
+            animatePred: true
+        })
 
         tflite.runModelOnImage({
                 path: this.state.imagePath, // required
@@ -62,14 +62,14 @@ export default class  PredictScreen extends React.Component {
             },
             (err, res) => {
                 if (err) { 
-                    console.log('***************')
-                    console.log(err)
-                    console.log('***************')
+                    Alert.alert(
+                        err,
+                        err,
+                        [{text: 'Ok'}]
+                    )
                 }
                     
                 else {
-                    console.log('========================')
-                    console.log(res)
                     res.sort((x, y) => (x.label > y.label) ? 1 : ((y.label > x.label) ? -1 : 0))
                     resFinal = []
                     for (let i=0; i<res.length; i++){
@@ -79,7 +79,6 @@ export default class  PredictScreen extends React.Component {
                                 confidence: Number(parseFloat(res[i].confidence*100).toFixed(2))
                             }
                         )
-                        console.log(typeof(resFinal[i].confidence))
                     }
                      
                     this.setState({
@@ -88,12 +87,8 @@ export default class  PredictScreen extends React.Component {
                         imageFlex: 5,
                         hasPredicted: true
                     })
-                    console.log('========================')
                 }
             })
-            console.log('Inference done!!!!!')
-            console.log(this.state.photoData.uri)
-            console.log(this.state.photoData.path)
     }
 
     componentDidMount() {
@@ -103,14 +98,9 @@ export default class  PredictScreen extends React.Component {
         },
             (err, res) => {
                 if (err) { console.log(err) } 
-                else { console.log(res) }
+                else { /*console.log(res)*/ }
             }
         )
-        // this.setState({
-        //     ...this.state,
-        //     imagePath: Platform.OS === 'ios' ? this.state.photoData.uri : 'file://' + this.state.photoData.path
-        // })
-        
     }
 
 
@@ -118,7 +108,6 @@ export default class  PredictScreen extends React.Component {
         return (
             <View style={{flexDirection: "row", }}>
                 <Text style={[styles.items, {paddingRight: 0}]}>{'\u2022' + ' '}</Text>
-                {/* <Text style={[styles.items, {paddingLeft: 0}]}>{item.label + ' ' + parseFloat(item.confidence*100).toFixed(4)}</Text> */}
                 <View style={{flexDirection: 'row', paddingLeft: 0}}>
                     <Text style={[styles.items]}>{item.label + ' : '}</Text>
                     <Text style={[styles.items, {color: 'red'}]}>{parseFloat(item.confidence*100).toFixed(4)}</Text>
@@ -126,7 +115,6 @@ export default class  PredictScreen extends React.Component {
             </View>
         )
     }
-
 
     render(){
 
@@ -152,35 +140,16 @@ export default class  PredictScreen extends React.Component {
 
                                     <BarChartComponent 
                                         data={this.state.predictions}
-                                        // data={[ 
-                                        //     {label: 'Daisy', confidence: 10},
-                                        //     {label: 'Dandelion', confidence: 5},
-                                        //     {label: 'Rose', confidence: 25},
-                                        //     {label: 'Sunflower', confidence: 15},
-                                        //     {label: 'Tulip', confidence: 20}
-                                        // ]} 
                                         viewStyle={styles.predictions}
                                     />
                                 )
                                 }
-
-                                    {/* <View style={styles.predictions}>  */}
-                                        {/* <FlatList 
-                                            numColumns={2}
-                                            data={this.state.predictions}
-                                            renderItem={this.renderItem}
-                                            
-                                        /> */}
-                                        
-                                        
-                                    {/* </View> */}
-                                
+                            
                                 { !this.state.hasPredicted ?
                                     <View style={[styles.buttonPredict]}>
                                         <Button
                                             title="Predict"
                                             onPress={this.handlePredict}
-                                            // onPress={() => {this.props.navigation.navigate("BarChart")}}
                                         />
                                     </View>
                                         :
@@ -241,14 +210,8 @@ const styles = StyleSheet.create({
     predictions: {
         width: '100%',
         height: '100%',
-        // borderColor: 'red',
-        // borderWidth: 2,
-        // borderRadius: 5,
         flex: 5,
         paddingBottom: 4,
-        // alignItems: 'center',
-        // alignSelf: 'center',
-        // paddingTop: 1
     }
 })
 

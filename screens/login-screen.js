@@ -7,8 +7,7 @@ import {
     View
 } from 'react-native';
 
-import { Input, Button, Icon } from 'react-native-elements';
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import { Input, Icon } from 'react-native-elements';
 
 
 export default class LoginScreen extends React.Component {
@@ -26,7 +25,7 @@ export default class LoginScreen extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-        if (this.state.username !== prevState.username || this.state.password != prevState.password) {
+        if (this.state.username !== prevState.username || this.state.password !== prevState.password) {
             this.validateForm();
         }
     }
@@ -54,7 +53,6 @@ export default class LoginScreen extends React.Component {
 
     handleSubmit = () => {
         if (this.state.isFormValid === true) {
-            // console.log('form ok!!')
             this.props.navigation.navigate('Home',
                 { username: this.state.username })
         }
@@ -74,23 +72,23 @@ export default class LoginScreen extends React.Component {
             <KeyboardAvoidingView
                 style={styles.container}
                 username={this.state.username}>
-                <Text style={styles.introText}>Flower Species Recognition</Text>
-                <Text style={[styles.introText, {fontSize: 15}]}>This app predicts flower species from images using Deep Learning</Text>
+                <Text style={[styles.introText, {flex: 1}]}>Flower Species Recognition</Text>
+                <Text style={[styles.introText, {fontSize: 15, flex: 1}]}>This app predicts flower species from images using Deep Learning</Text>
                 <Image
                     style={styles.image}
-                    source={require('../data/images/flower1.jpg')}
+                    source={require('../assets/images/flower1.jpg')}
                     resizeMode='contain'
                 />
 
-                <Text style={[styles.introText, {color: 'red', fontSize: 15}]}>Please login to start using the app!!!</Text>
+                <Text style={[styles.introText, {color: 'red', fontSize: 15, flex: 1}]}>
+                    Please login to start using the app!!!
+                </Text>
 
                 <Input
                     placeholder='username'
-                    // placeholderTextColor='black'
                     leftIcon={
                         <Icon name='user' type='feather' size={24} color='black' />
                     }
-                    // inputStyle={styles.text}
                     inputContainerStyle={styles.input}
 
                     value={this.state.username}
@@ -102,24 +100,11 @@ export default class LoginScreen extends React.Component {
                     leftIcon={
                         <Icon name='lock' size={24} color='black' />
                     }
-                    // inputStyle={styles.input}
                     inputContainerStyle={styles.input}
                     value={this.state.password}
                     onChangeText={this.handleChange('password')}
                     secureTextEntry={true}
                 />
-                {/* <Button
-                    buttonStyle={[styles.button, { backgroundColor: changingColor[this.state.isFormValid] }]}
-                    onPress={this.handleSubmit}
-                    disabled={!this.state.isFormValid}
-                    icon={
-                        <Icon
-                            name="sign-in"
-                            size={30}
-                            color="black"
-                        />
-                    }
-                /> */}
                 
                 <View style={styles.button}>
                     <Icon 
@@ -146,11 +131,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         backgroundColor: '#F4FBFB',
-        // backgroundColor: '#b7b3ce'
     },
     input: {
         borderWidth: 1,
-        borderColor: 'black',
         minWidth: 100,
         marginTop: 10,
         marginBottom: 10,
@@ -161,7 +144,7 @@ const styles = StyleSheet.create({
         height: 30
     },
     button: {
-        // backgroundColor: '#b7b3ce',
+        flex: 1,
         backgroundColor: '#F4FBFB',
         alignItems: 'center',
         paddingBottom: 20,
@@ -173,13 +156,15 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     image: {
-        height: 300,
-        width: 400,
+        flex: 5,
+        height: "100%",
+        width: "100%",
         borderRadius: 10,
         alignSelf: 'center'
 
     },
     introText: {
+        flex: 1,
         color: 'teal',
         alignSelf: 'center',
         textAlign: 'center',

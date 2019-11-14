@@ -3,6 +3,7 @@ package com.whichflower;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.slider.ReactSliderPackage;
 import com.horcrux.svg.SvgPackage;
 import com.reactlibrary.TfliteReactNativePackage;
 import org.reactnative.camera.RNCameraPackage;
@@ -29,6 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactSliderPackage(),
             new SvgPackage(),
             new TfliteReactNativePackage(),
             new RNCameraPackage(),

@@ -841,6 +841,11 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
+"@react-native-community/slider@1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-1.1.3.tgz#5f5e574ddf108880fc32d9cf98c7b51363353668"
+  integrity sha512-l5GRS+u+yeoiTcjME5laQfAMWdsKG2lPozUzwh0vBLl1rXDwZlMTvsGJPEWWYvCT1npu+isyHx10BFUEcIkCmg==
+
 "@react-navigation/core@~3.4.1":
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.4.2.tgz#bec563e94fde40fbab3730cdc97f22afbb2a1498"
@@ -1933,6 +1938,11 @@ decode-uri-component@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
   integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+
+dedent@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.6.0.tgz#0e6da8f0ce52838ef5cec5c8f9396b0c1b64a3cb"
+  integrity sha1-Dm2o8M5Sg471zsXI+TlrDBtko8s=
 
 deep-equal@^1.0.0:
   version "1.0.1"
@@ -3978,6 +3988,21 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1, loose-envify@^1.4
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+lottie-ios@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/lottie-ios/-/lottie-ios-3.0.3.tgz#8b1d6463a04fe59509a55ec8cc5feea7f40f4cf3"
+  integrity sha512-p7dx7bq+1yUX3qA9Xof7Lpa2Gfopi6bPtMfFdv9Qi6iKVSkg0FwJXc7fD2AiiW8trHVFhHgjj2ELTZrZF6uu1A==
+
+lottie-react-native@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/lottie-react-native/-/lottie-react-native-3.1.0.tgz#8be401ac7cc7d9e41aa4948a47ddc307887c09e1"
+  integrity sha512-8AYKHT7+vyV/dt38Z7tRyMAnX4nvNRcRBXtDw0+IXAtvyoFk4ethDnI3AtDD9m3o/vNKqeHuO6YsojGAIVQMcg==
+  dependencies:
+    invariant "^2.2.2"
+    lottie-ios "^3.0.3"
+    prop-types "^15.5.10"
+    react-native-safe-modules "^1.0.0"
+
 lru-cache@^4.0.1:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
@@ -5284,6 +5309,13 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-animated-loader@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-animated-loader/-/react-native-animated-loader-0.0.7.tgz#a5b8a4fc38ecae418693dc1bd9ffaac9528b82c6"
+  integrity sha512-s0CK5wKvQzZDYFKrKx2fz3bYmcr0PSdAzfrvSSPTyrvzYfmSW1bfN5cRkR8ouBXDRDnqRSfZYKQElCKhiBLbaQ==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-camera@^2.11.1:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.11.1.tgz#a72062f59bb57c0cb2bd57fe6713fa23b2a90571"
@@ -5347,6 +5379,13 @@ react-native-safe-area-view@^0.14.1:
   integrity sha512-ypDQVoAyNHBhMR1IGfadm8kskNzPg5czrDAzQEu5MXG9Ahoi5f1cL/rT2KO+R9f6xRjf6b1IjY53m0B0xHRd0A==
   dependencies:
     hoist-non-react-statics "^2.3.1"
+
+react-native-safe-modules@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-safe-modules/-/react-native-safe-modules-1.0.0.tgz#10a918adf97da920adb1e33e0c852b1e80123b65"
+  integrity sha512-ShT8duWBT30W4OFcltZl+UvpPDikZFURvLDQqAsrvbyy6HzWPGJDCpdqM+6GqzPPs4DPEW31YfMNmdJcZ6zI2w==
+  dependencies:
+    dedent "^0.6.0"
 
 "react-native-screens@^1.0.0 || ^1.0.0-alpha":
   version "1.0.0-alpha.22"

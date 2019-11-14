@@ -10,13 +10,6 @@ export default class BarChartComponent extends React.PureComponent {
         const data = this.props.data
         const viewStyle = this.props.viewStyle
         console.log(data)
-        // const data = [ 
-        //     {label: 'Daisy', confidence: 10},
-        //     {label: 'Dandelion', confidence: 5},
-        //     {label: 'Rose', confidence: 25},
-        //     {label: 'Sunflower', confidence: 15},
-        //     {label: 'Tulip', confidence: 20}
-        //  ]
 
         const CUT_OFF = 20
         const Labels = ({ x, y, bandwidth, data }) => (
@@ -57,7 +50,7 @@ export default class BarChartComponent extends React.PureComponent {
                 <XAxis
                     svg={{
                         fill: '#3673DD',
-                        fontSize: 20,
+                        fontSize: 15,
                     }}
                     style={{ marginTop: 10 }}
                     data={ data }

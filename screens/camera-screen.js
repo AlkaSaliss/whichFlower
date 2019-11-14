@@ -6,6 +6,7 @@ import {
     StyleSheet,
     Platform,
 } from 'react-native';
+import Slider from '@react-native-community/slider';
 import { RNCamera } from 'react-native-camera';
 import { Icon } from 'react-native-elements';
 
@@ -26,11 +27,12 @@ export default class CameraScreen extends React.Component {
     }
 
     state = {
-        photo: null
+        photo: null,
+        zoom: 0
     }
 
     takePicture() {
-        const options = { quality: 0.5, base64: true,}
+        const options = { quality: 1.0, base64: false, skipProcessing: true, doNotSave: true}
 
         // to force image orientation to be on correct format
         device = Platform.OS
@@ -55,6 +57,14 @@ export default class CameraScreen extends React.Component {
             .catch(err => console.error(err))
     }
 
+    changeZoom(value) {
+        this.setState(() => {
+        return {
+            zoom: parseFloat(value)/100
+        }
+        })
+    }
+
     render(){
         device = Platform.OS
         orientationMode = {}
@@ -63,7 +73,6 @@ export default class CameraScreen extends React.Component {
         } else {
             orientationMode['fixOrientation'] = true
         }
-        
 
         return ( 
             <View style={styles.container}>
@@ -72,12 +81,9 @@ export default class CameraScreen extends React.Component {
                     style={styles.camera}
                     fixOrientation={true}
                     forceUpOrientation={true}
+                    flashMode={RNCamera.Constants.FlashMode.auto}
+                    zoom={this.state.zoom}
                 >
-                    {/* <Button
-                        style={styles.capture}
-                        title='Capture'
-                        onPress={this.takePicture.bind(this)}
-                    /> */}
                     <Icon 
                         name='camera'
                         type='material-community'
@@ -87,8 +93,19 @@ export default class CameraScreen extends React.Component {
                         reverse
                         onPress={this.takePicture.bind(this)}
                     />
+                    <Slider
+                        style={styles.slider}
+                        minimumValue={0}
+                        maximumValue={100}
+                        thumbTintColor={"blue"}
+                        maximumTrackTintColor={"white"}
+                        minimumTrackTintColor={"blue"}
+                        onValueChange={this.changeZoom.bind(this)}
+                    />
+                    
                 </RNCamera>
             </View>
+                
         )
     }
 }
@@ -100,18 +117,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     camera: {
-        flex: 9,
+        flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
         height: Dimensions.get('window').height,
         width: Dimensions.get('window').width
         },
-    capture: {
-        flex: 1,
-        backgroundColor: '#fff',
-        borderRadius: 5,
-        color: '#000',
-        // padding: 10,
-        // margin: 40
+    slider: {
+        width: 200,
+        height: 40,
     }
+    // capture: {
+    //     flex: 1,
+    //     backgroundColor: '#fff',
+    //     borderRadius: 5,
+    //     color: '#000',
+    // }
 })

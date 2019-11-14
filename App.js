@@ -13,52 +13,29 @@ import LoginScreen from './screens/login-screen';
 import HomeScreen from './screens/home';
 import CameraScreen from './screens/camera-screen';
 import PredictScreen from './screens/predict-screen';
-import BarChartComponent from './screens/barChart';
 import { createStackNavigator, createAppContainer} from 'react-navigation';
 
 
+// List of screens contained in the app
 const AppNavigator = createStackNavigator(
   {
     Login:{
-      screen: LoginScreen
+      screen: LoginScreen // for login with password and username
     },
     Home: {
-      screen: HomeScreen,
+      screen: HomeScreen // Main screen presenting the options in the app
     },
     Camera: {
-      screen: CameraScreen
+      screen: CameraScreen // Screen for taking a picture via camera
     },
     Predict: {
-      screen: PredictScreen
+      screen: PredictScreen // screen displaying the prediction made by the app
     }
-    // BarChart: {
-    //   screen: BarChartComponent
-    // }
     },
   {
     initialRouteName: "Login",
-    // initialRouteName: "BarChart",
     headerLayoutPreset: 'center'
   }
 )
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#F5FCFF',
-//   },
-//   welcome: {
-//     fontSize: 20,
-//     textAlign: 'center',
-//     margin: 10,
-//   },
-//   instructions: {
-//     textAlign: 'center',
-//     color: '#333333',
-//     marginBottom: 5,
-//   },
-// });
 
 export default createAppContainer(AppNavigator)

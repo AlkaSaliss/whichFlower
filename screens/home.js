@@ -1,31 +1,34 @@
 import React from 'react';
-import {Platform, StyleSheet, Text, View, Image, Button, FlatList} from 'react-native';
+import {StyleSheet, Text, View, Image, Button, FlatList} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import Emoji from 'react-native-emoji';
 import { Icon } from 'react-native-elements';
-
+import targets from '../assets/targets.json'
 
 export default class  HomeScreen extends React.Component {
 
     state = {
-        supportedSpecies: ['Daisy', 'Dandelion', 'Rose', 'Sunflower', 'Tulip']
+        // supportedSpecies: ['Daisy', 'Dandelion', 'Rose', 'Sunflower', 'Tulip']
+        supportedSpecies: Object.values(targets)
     }
 
-    static navigationOptions = ({navigation}) => {
+    static navigationOptions = ({
+        navigation
+    }) => {
         return {
-        headerTitle: 'Home',
-        headerTintColor: 'teal',
-        headerLeft: (
-                        <Button
-                            title="Go Back"
-                            color="teal"
-                            onPress={() => navigation.navigate('Login')}
-                        />
-        )
-        
-    }
-}
+            headerTitle: 'Home',
+            headerTintColor: 'teal',
+            headerLeft: ( <
+                Button title = "Go Back"
+                color = "teal"
+                onPress = {
+                    () => navigation.navigate('Login')
+                }
+                />
+            )
 
+        }
+    }
 
 
     handleChoosePhoto = () => {
@@ -33,10 +36,9 @@ export default class  HomeScreen extends React.Component {
             noData: true
         }
         ImagePicker.launchImageLibrary(options, response => {
-            if (response.uri){
+            if (response.uri) {
                 this.props.navigation.navigate(
-                    "Predict",
-                    {
+                    "Predict", {
                         data: response,
                         imagePath: response.path,
                         username: this.props.navigation.getParam('username')
@@ -52,7 +54,6 @@ export default class  HomeScreen extends React.Component {
             {username: this.props.navigation.getParam('username')}
         )
     }
-    
 
     renderItem = ({item}) => {
         return (
@@ -68,7 +69,8 @@ export default class  HomeScreen extends React.Component {
         return (<View behavior="padding" style={styles.container}>
 
                     <Text style={styles.text}>
-                        Welcome {this.props.navigation.getParam('username')} <Emoji name="smiley" style={{fontSize: 25}} />!
+                        Welcome {this.props.navigation.getParam('username')} 
+                        <Emoji name="smiley" style={{fontSize: 25}} />!
                     </Text>
 
                     <Text style={[styles.text, {fontSize: 15}]}>
@@ -81,25 +83,21 @@ export default class  HomeScreen extends React.Component {
                     <View style={{flex: 3, alignItems: 'center', alignSelf: 'center', paddingTop: 1}}> 
                         <FlatList 
                             numColumns={2}
-                            data={[{key: 'Daisy'}, {key: 'Dandelion'}, {key: 'Rose'}, {key: 'Sunflower'}, {key: 'Tulip'}]}
+                            // data={[{key: 'Daisy'}, {key: 'Dandelion'}, {key: 'Rose'}, {key: 'Sunflower'}, {key: 'Tulip'}]}
+                            data={targets}
                             renderItem={this.renderItem}
-                             
                         />
                     </View>
-                   
 
                     <View style={styles.image}>
                         <Image
-                            source={require('../data/images/AI.jpg')}
+                            source={require('../assets/images/AI.jpg')}
                             style={{width: '100%', height: '100%', borderRadius: 15}}
                             resizeMode='stretch'
                         />
                     </View>
                     
                     <View style={styles.photoButton}>
-                        {/* <View style={styles.buttonsContainer}>
-                            <Button title='Upload' onPress={this.handleChoosePhoto} /> 
-                        </View> */}
                         <View style={[styles.buttonsContainer, {paddingRight: 15}]}>
                             <Icon 
                                 name='folder-upload'
@@ -111,9 +109,6 @@ export default class  HomeScreen extends React.Component {
                                 onPress={this.handleChoosePhoto}
                             /> 
                         </View>
-                        {/* <View style={styles.buttonsContainer} >
-                            <Button title = 'Camera' onPress={this.goToCamera }/>
-                        </View> */}
                         <View style={[styles.buttonsContainer, {paddingLeft: 15}]} >
                             <Icon 
                                 name='camera'
@@ -137,7 +132,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'space-between',
-        // backgroundColor: '#b7b3ce',
         backgroundColor: '#F4FBFB',
     },
     photoButton: {
@@ -158,8 +152,6 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 7,
-        // width: 300,
-        // height: 300,
         borderRadius: 15,
     },
     items: {
