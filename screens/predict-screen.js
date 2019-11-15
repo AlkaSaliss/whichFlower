@@ -40,7 +40,6 @@ export default class  PredictScreen extends React.Component {
         imageWidth: width_,
         predictions: null,
         hasPredicted: false,
-        animatePred: false,
         labelsFile: 'models/labels.txt',
         modelFile: 'models/model.tflite',
         imageFlex: 9
@@ -50,7 +49,6 @@ export default class  PredictScreen extends React.Component {
     handlePredict = () => {
         this.setState({
             ...this.state,
-            animatePred: true
         })
 
         tflite.runModelOnImage({
@@ -97,8 +95,12 @@ export default class  PredictScreen extends React.Component {
             labels: this.state.labelsFile
         },
             (err, res) => {
-                if (err) { console.log(err) } 
-                else { /*console.log(res)*/ }
+                if (err) {
+                    console.log(err)
+                } 
+                else { 
+                    // pass
+                 }
             }
         )
     }

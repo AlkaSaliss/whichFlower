@@ -9,8 +9,7 @@ export default class BarChartComponent extends React.PureComponent {
     render() {
         const data = this.props.data
         const viewStyle = this.props.viewStyle
-        console.log(data)
-
+        
         const CUT_OFF = 20
         const Labels = ({ x, y, bandwidth, data }) => (
             data.map((value, index) => (
