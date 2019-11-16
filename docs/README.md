@@ -1,8 +1,3 @@
----
----
-
-@import "{{ site.theme }}";
-
 # whichFlower : a flower species recognition app using tensorflow/keras and React-Native
 
 <p style="color:red;">
