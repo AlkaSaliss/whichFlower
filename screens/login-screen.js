@@ -76,7 +76,7 @@ export default class LoginScreen extends React.Component {
                 <Text style={[styles.introText, {fontSize: 15, flex: 1}]}>This app predicts flower species from images using Deep Learning</Text>
                 <Image
                     style={styles.image}
-                    source={require('../assets/images/flower1.jpg')}
+                    source={require('../docs/images/flower1.jpg')}
                     resizeMode='contain'
                 />
 

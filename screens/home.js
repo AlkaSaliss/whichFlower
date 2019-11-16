@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, Image, Button, FlatList} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import Emoji from 'react-native-emoji';
 import { Icon } from 'react-native-elements';
-import targets from '../assets/targets.json'
+import targets from '../docs/targets.json'
 
 export default class  HomeScreen extends React.Component {
 
@@ -91,7 +91,7 @@ export default class  HomeScreen extends React.Component {
 
                     <View style={styles.image}>
                         <Image
-                            source={require('../assets/images/AI.jpg')}
+                            source={require('../docs/images/AI.jpg')}
                             style={{width: '100%', height: '100%', borderRadius: 15}}
                             resizeMode='stretch'
                         />

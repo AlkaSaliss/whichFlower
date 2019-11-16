@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import Emoji from 'react-native-emoji';
 import Tflite from "tflite-react-native";
 import BarChartComponent from './barChart';
-import targets from '../assets/targets.json'
 
 
 // instantiate a new tflite object
