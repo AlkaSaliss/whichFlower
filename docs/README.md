@@ -1,6 +1,6 @@
 # whichFlower : a flower species recognition app using tensorflow/keras and React-Native
 
-<p style="color:red;">
+<p style="color:white; text-align:justify">
   As a passionate person about computer vision (CV), I came to know that model deployment is also important in model development process because the usefulness of a model is measured by the satisfaction of end users. In a previous project I named DEmoClassi (Demographic (age, gender race) and Emotion (happy, neutral, angry, ...) Classification) I tried to turned my trained models in a standalone python module that can be run on windows/Linux using OpenCV. [You can check it here](https://github.com/AlkaSaliss/DEmoClassi).
 </p>
 
