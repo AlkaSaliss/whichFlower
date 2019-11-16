@@ -11,4 +11,4 @@ I'll try to describe my journey using this post composed of three sections :
 * Image classification models training
 * Model deployment using React-Native
 
-{%include_relatives assets/html_files/EDA.html %}
+{%include_relative assets/html_files/EDA.html %}
