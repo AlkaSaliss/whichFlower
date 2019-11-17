@@ -15,37 +15,31 @@ The end goal for me was to combine my 2 passions, CV and programming into anothe
 <p style="color:white; text-align:justify;">
 I'll try to describe my journey using this post composed of three sections : 
 
-* Exploratory Data Analysis in which I analyse the flower images dataset I'll use
-* Image classification models training
-* Model deployment using React-Native
+<ul>
+<li> Exploratory Data Analysis in which I analyse the flower images dataset I'll use </li>
+<li> Image classification models training </li>
+<li> Model deployment using React-Native </li>
 </p>
-
+</ul>
 <br>
 
 {%include_relative html_files/EDA.html %}
 {%include_relative html_files/flowers-classification.html %}
 
-<title>App structure</title>
+<h2 style="color:white;">App structure</h2>
 <p style="color:white; text-align:justify;">
 The application content walkthrough is beyond the scope of this post. Nevertheless, I'll give an overview of the app in this last section.
 The application consists mainly of 4 screens for which the code is located in the `screens` folder in the repository. The screens are as follow : <br>
-  * login screen (`login-screen.js` file) which is the entry point of the app. It contains a simple login form (user name and password). However there is no real control of the user name and passwod being typed as the app is not connected to any server. The eonly control I implemented is the number of character being typed. So it is just a kind of dummy login screen
+  <ul>
+  <li> login screen (`login-screen.js` file) which is the entry point of the app. It contains a simple login form (user name and password). However there is no real control of the user name and passwod being typed as the app is not connected to any server. The eonly control I implemented is the number of character being typed. So it is just a kind of dummy login screen </li>
   
-  * Once the user is logged in, he is redirected ot the home screen (`home.js` file) where the user has the possibility to take the picture of a flower using the phone's camera, or upload a flower image directly from his phone's storage. 
+  <li> Once the user is logged in, he is redirected ot the home screen (`home.js` file) where the user has the possibility to take the picture of a flower using the phone's camera, or upload a flower image directly from his phone's storage </li>
   
-  * The camera screen (`camera-screen.js` file) allows the user to capture an image (hopefully a flower one :) ) using the phone's camera 
+  <li> The camera screen (`camera-screen.js` file) allows the user to capture an image (hopefully a flower one :) ) using the phone's camera </li>
   
-  * The image being uploaded/captured, the user passes to the final screen whic allows the user to predict the specie of the corresponding flower image. And that is the predict screen (`predict-screen.js` file)
+  <li> The image being uploaded/captured, the user passes to the final screen whic allows the user to predict the specie of the corresponding flower image. And that is the predict screen (`predict-screen.js` file) </li>
   
-  * There is another file (barChart.js) which contains the implementation code for the bar chart (representing the probability predcited  for each flower class) displayed in the predict screen.
+  <li> There is another file (barChart.js) which contains the implementation code for the bar chart (representing the probability predcited  for each flower class) displayed in the predict screen </li>
+  </ul>
 </p>
 
-
-
-<ul>
-<li>Daisy</li>
-<li>Dandelion</li>
-<li>Rose</li>
-<li>Sunflower</li>
-<li>Tulip</li>
-</ul>
