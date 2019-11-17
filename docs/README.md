@@ -31,19 +31,23 @@ I'll try to describe my journey using this post composed of three sections :
 The application content walkthrough is beyond the scope of this post. Nevertheless, I'll give an overview of the app in this last section.
 The application consists mainly of 4 screens for which the code is located in the `screens` folder in the repository. The screens are as follow : <br>
   <ul style="color:white; text-align:justify;">
-  <li style="color:white; text-align:justify;"> login screen (`login-screen.js` file) which is the entry point of the app. It contains a simple login form (user name and password). However there is no real control of the user name and passwod being typed as the app is not connected to any server. The eonly control I implemented is the number of character being typed. So it is just a kind of dummy login screen </li>
-    <img src="images/login.jpg" alt="login" width="200" height="400" align="center">
+  <li style="color:white; text-align:justify;"> login screen (`login-screen.js` file) which is the entry point of the app. It contains a simple login form (user name and password). However there is no real control of the user name and passwod being typed as the app is not connected to any server. The eonly control I implemented is the number of character being typed. So it is just a kind of dummy login screen </li> <br> <br>
+    <img src="images/login.jpg" alt="login" width="200" height="400" style="horizontal-align:middle"> 
+    <br> <br>
   
-  <li style="color:white; text-align:justify;"> Once the user is logged in, he is redirected ot the home screen (`home.js` file) where the user has the possibility to take the picture of a flower using the phone's camera, or upload a flower image directly from his phone's storage </li>
-    <img src="images/home.jpg" alt="home" width="200" height="400" align="center">
+  <li style="color:white; text-align:justify;"> Once the user is logged in, he is redirected ot the home screen (`home.js` file) where the user has the possibility to take the picture of a flower using the phone's camera, or upload a flower image directly from his phone's storage </li> <br> <br>
+    <img src="images/home.jpg" alt="home" width="200" height="400" style="horizontal-align:middle">
+    <br> <br>
   
-  <li style="color:white; text-align:justify;"> The camera screen (`camera-screen.js` file) allows the user to capture an image (hopefully a flower one :) ) using the phone's camera </li>
-   <img src="images/camera.jpg" alt="camera" width="200" height="400" align="center">
-
-  <li style="color:white; text-align:justify;"> The image being uploaded/captured, the user passes to the final screen whic allows the user to predict the specie of the corresponding flower image. And that is the predict screen (`predict-screen.js` file) </li>
-  <img src="images/predict1.jpg" alt="predict1" width="200" height="400" align="center" hspace="10">
-  <img src="images/predict2.jpg" alt="predict2" width="200" height="400" align="center">
+  <li style="color:white; text-align:justify;"> The camera screen (`camera-screen.js` file) allows the user to capture an image (hopefully a flower one :) ) using the phone's camera </li> <br> <br>
+   <img src="images/camera.jpg" alt="camera" width="200" height="400" style="horizontal-align:middle">
+   <br> <br>
+   
+  <li style="color:white; text-align:justify;"> The image being uploaded/captured, the user passes to the final screen whic allows the user to predict the specie of the corresponding flower image. And that is the predict screen (`predict-screen.js` file) </li> <br> <br>
+  <img src="images/predict1.jpg" alt="predict1" width="200" hspace="50" height="400" style="horizontal-align:middle">
+  <img src="images/predict2.jpg" alt="predict2" width="200" height="400" style="horizontal-align:middle">
   
+  <br> <br>
   <li style="color:white; text-align:justify;"> There is another file (barChart.js) which contains the implementation code for the bar chart (representing the probability predcited  for each flower class) displayed in the predict screen </li>
   </ul>
 </p>
