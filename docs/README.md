@@ -19,8 +19,8 @@ I'll try to describe my journey using this post composed of three sections :
 <li style="color:white; text-align:justify;"> Exploratory Data Analysis in which I analyse the flower images dataset I'll use </li>
 <li style="color:white; text-align:justify;"> Image classification models training </li>
 <li style="color:white; text-align:justify;"> Model deployment using React-Native </li>
-</p>
 </ul>
+</p>
 <br>
 
 {%include_relative html_files/EDA.html %}
