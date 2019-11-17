@@ -28,7 +28,8 @@ I'll try to describe my journey using this post composed of three sections :
 
 <h2 style="color:white;">App structure</h2>
 <p style="color:white; text-align:justify;">
-The application content walkthrough is beyond the scope of this post. Nevertheless, I'll give an overview of the app in this last section.
+The application content walkthrough is beyond the scope of this post. Nevertheless, I'll give an overview of the app in this last section. <br>
+  The model is deployed using a library called "tflite-react-native" (<a href="https://github.com/shaqian/tflite-react-native">see this github page for more details</a>. The workflow consists of first converting the trained keras models into <a href="https://www.tensorflow.org/lite/convert/python_api#converting_a_keras_model_">tensorflow lite format</a> and use the tflite-react-native library to integrate the tf-lite model into the react-native application.<br>
 The application consists mainly of 4 screens for which the code is located in the `screens` folder in the repository. The screens are as follow : <br>
   <ul style="color:white; text-align:justify;">
   <li style="color:white; text-align:justify;"> login screen (`login-screen.js` file) which is the entry point of the app. It contains a simple login form (user name and password). However there is no real control of the user name and passwod being typed as the app is not connected to any server. The eonly control I implemented is the number of character being typed. So it is just a kind of dummy login screen </li><br/><br/>
