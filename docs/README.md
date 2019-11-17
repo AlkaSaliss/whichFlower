@@ -15,7 +15,7 @@ The end goal for me was to combine my 2 passions, CV and programming into anothe
 <p style="color:white; text-align:justify;">
 I'll try to describe my journey using this post composed of three sections : 
 
-<ul>
+<ul style="color:white; text-align:justify;">
 <li> Exploratory Data Analysis in which I analyse the flower images dataset I'll use </li>
 <li> Image classification models training </li>
 <li> Model deployment using React-Native </li>
@@ -30,7 +30,7 @@ I'll try to describe my journey using this post composed of three sections :
 <p style="color:white; text-align:justify;">
 The application content walkthrough is beyond the scope of this post. Nevertheless, I'll give an overview of the app in this last section.
 The application consists mainly of 4 screens for which the code is located in the `screens` folder in the repository. The screens are as follow : <br>
-  <ul>
+  <ul style="color:white; text-align:justify;">
   <li> login screen (`login-screen.js` file) which is the entry point of the app. It contains a simple login form (user name and password). However there is no real control of the user name and passwod being typed as the app is not connected to any server. The eonly control I implemented is the number of character being typed. So it is just a kind of dummy login screen </li>
   
   <li> Once the user is logged in, he is redirected ot the home screen (`home.js` file) where the user has the possibility to take the picture of a flower using the phone's camera, or upload a flower image directly from his phone's storage </li>
