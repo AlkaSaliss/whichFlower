@@ -7,10 +7,6 @@ The end goal for me was to combine my 2 passions, CV and programming into anothe
 
 Below is a short animated demo showing the prediction process using the app : 
 
-<video controls loop>
-  <source src="docs/images/demo.mp4" type="video/mp4">
-  <source src="docs/images/demo.ogg" type="video/ogg">
-  Your browser does not support the video tag.
-</video>
+![demo](https://j.gifs.com/vlJ0yX.gif)
 
 [Here is the link](https://alkasaliss.github.io/whichFlower/) describing my approach from exploratory data analysis to model deployment in the app.
