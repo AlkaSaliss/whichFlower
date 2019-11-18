@@ -1,6 +1,7 @@
 <h1 style="color:'white'; text-align:center;"> whichFlower : a flower species recognition app using tensorflow/keras and React-Native </h1>
-
-<img src="images/demo.gif" alt="demo.gif" style="width:400px;height:600px;align:'center'">
+<br/><br/>
+<img src="images/demo.gif" alt="demo.gif" style="width:200px;height:400px;margin-left:auto;margin-right:auto;display:block;">
+<br/><br/>
 
 <p style="color:white; text-align:justify;">
   As a passionate person about computer vision (CV), I came to know that model deployment is also important in model development process because the usefulness of a model is measured by the satisfaction of end users. In a previous project I named DEmoClassi (Demographic (age, gender race) and Emotion (happy, neutral, angry, ...) Classification) I tried to turned my trained models in a standalone python module that can be run on windows/Linux using OpenCV. <a href="https://github.com/AlkaSaliss/DEmoClassi">You can check it here</a>.
