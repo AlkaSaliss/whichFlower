@@ -7,6 +7,6 @@ The end goal for me was to combine my 2 passions, CV and programming into anothe
 
 Below is a short animated demo showing the prediction process using the app : 
 
-![demo](https://j.gifs.com/vlJ0yX.gif)
+<img src="docs/images/demo.gif" alt="Girl in a jacket" style="width:00px;height:600px;">
 
 [Here is the link](https://alkasaliss.github.io/whichFlower/) describing my approach from exploratory data analysis to model deployment in the app.
